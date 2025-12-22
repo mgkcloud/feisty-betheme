@@ -263,6 +263,26 @@ function comfortin_cart_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'comfortin_cart_enqueue_styles', 40 );
 
+/**
+ * Comfort-in | Cart-specific JS overrides
+ */
+function comfortin_cart_enqueue_scripts() {
+	if ( ! function_exists( 'is_cart' ) || ! function_exists( 'is_woocommerce' ) ) {
+		return;
+	}
+
+	if ( ! is_cart() ) {
+		return;
+	}
+
+	$handle = 'comfortin-cart-widget';
+	$src = get_theme_file_uri( '/js/comfortin-cart.js' );
+	$ver = MFN_THEME_VERSION;
+
+	wp_enqueue_script( $handle, $src, [], $ver, true );
+}
+add_action( 'wp_enqueue_scripts', 'comfortin_cart_enqueue_scripts', 45 );
+
 
 function mfn_admin_scripts() {
 	if( is_admin() && function_exists('is_woocommerce') ) {
