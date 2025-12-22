@@ -228,11 +228,11 @@ add_action('wp_enqueue_scripts', 'mfn_woo_styles');
  * render above totals inside the cart collaterals column.
  */
 function comfortin_cart_reorder_cross_sells() {
-	if ( ! function_exists( 'is_cart' ) || ! function_exists( 'is_woocommerce' ) ) {
+	if ( ! function_exists( 'is_cart' ) || ! function_exists( 'is_checkout' ) || ! function_exists( 'is_woocommerce' ) ) {
 		return;
 	}
 
-	if ( ! is_cart() ) {
+	if ( ! is_cart() && ! is_checkout() ) {
 		return;
 	}
 
@@ -246,11 +246,11 @@ add_action( 'wp', 'comfortin_cart_reorder_cross_sells', 20 );
  * Comfort-in | Cart-specific CSS overrides
  */
 function comfortin_cart_enqueue_styles() {
-	if ( ! function_exists( 'is_cart' ) || ! function_exists( 'is_woocommerce' ) ) {
+	if ( ! function_exists( 'is_cart' ) || ! function_exists( 'is_checkout' ) || ! function_exists( 'is_woocommerce' ) ) {
 		return;
 	}
 
-	if ( ! is_cart() ) {
+	if ( ! is_cart() && ! is_checkout() ) {
 		return;
 	}
 
