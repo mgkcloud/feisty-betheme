@@ -204,6 +204,7 @@ body.woocommerce-cart #Top_bar a#header_cart .header-cart-count {
 
 	body.woocommerce-cart #Top_bar .logo {
 		margin: 0;
+		margin-right: auto;
 	}
 
 	body.woocommerce-cart #Top_bar #logo img {
@@ -213,9 +214,18 @@ body.woocommerce-cart #Top_bar a#header_cart .header-cart-count {
 
 	body.woocommerce-cart #Top_bar .menu_wrapper {
 		margin-left: auto;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
 	}
 
 	body.woocommerce-cart #Top_bar .responsive-menu-toggle {
+		position: static !important;
+		float: none !important;
+		display: inline-flex;
+		align-items: center;
+		margin-left: auto;
+		margin-right: 12vw;
 		color: #ffffff;
 		border-radius: 10px;
 		padding: 6px 8px;
@@ -228,7 +238,15 @@ body.woocommerce-cart #Top_bar a#header_cart .header-cart-count {
 	}
 
 	body.woocommerce-cart #Action_bar {
+		background: #2c5a8f !important;
 		padding: 4px 0;
+	}
+
+	body.woocommerce-cart #Header_wrapper #Action_bar,
+	body.woocommerce-cart #Header #Action_bar,
+	body.woocommerce-cart #Header #Action_bar .container,
+	body.woocommerce-cart #Header #Action_bar .column.one {
+		background-color: #2c5a8f !important;
 	}
 
 	body.woocommerce-cart #Action_bar .contact_details .slogan {
@@ -1184,6 +1202,14 @@ body.woocommerce-cart
         #Top_bar a.responsive-menu-toggle {
             display: block !important;
             margin-top: -38px;
+        }
+    }
+
+    @media only screen and (max-width: 999px) {
+        #Top_bar .logo #logo, #Top_bar .logo .custom-logo-link {
+            margin: 0!important;
+            margin-left: 0;
+
         }
     }
 
