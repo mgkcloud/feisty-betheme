@@ -1,0 +1,132 @@
+/*
+ * Comfort-in™ | Cart UX bridge overrides
+ * Goal: keep the primary checkout action prominent and visually consistent
+ * with the modern landing page without a full WooCommerce redesign.
+ */
+
+body.woocommerce-cart {
+	--comfortin-accent: #d5b24a;
+	--comfortin-accent-hover: #c6a33c;
+	--comfortin-accent-text: #111;
+	--comfortin-card-border: rgba(0, 0, 0, 0.06);
+	--comfortin-card-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Reclaim above-the-fold space */
+body.woocommerce-cart #Subheader {
+	padding: 18px 0;
+}
+
+body.woocommerce-cart .mfn-cart-step {
+	padding: 20px 0 8px;
+}
+
+body.woocommerce-cart .mfn-checkout-steps {
+	margin-bottom: 18px !important;
+}
+
+body.woocommerce-cart .woocommerce .woocommerce-notices-wrapper .woocommerce-message,
+body.woocommerce-cart .woocommerce .woocommerce-notices-wrapper .woocommerce-info,
+body.woocommerce-cart .woocommerce .woocommerce-notices-wrapper .woocommerce-error,
+body.woocommerce-cart .woocommerce .woocommerce-notices-wrapper .alert {
+	margin: 0 0 12px;
+	padding: 12px 14px;
+	border-radius: 10px;
+}
+
+/* Make the totals block feel like a modern card */
+body.woocommerce-cart .woocommerce .cart-collaterals {
+	border: 1px solid var(--comfortin-card-border);
+	box-shadow: var(--comfortin-card-shadow);
+}
+
+/* Primary CTA: Proceed to checkout */
+body.woocommerce-cart .woocommerce .wc-proceed-to-checkout a.checkout-button,
+body.woocommerce-cart .woocommerce a.checkout-button {
+	background: var(--comfortin-accent) !important;
+	color: var(--comfortin-accent-text) !important;
+	border: 0 !important;
+	border-radius: 12px !important;
+	font-weight: 700 !important;
+	letter-spacing: 0 !important;
+	text-transform: none !important;
+	padding: 14px 18px !important;
+	font-size: 16px !important;
+	line-height: 1.2 !important;
+	box-shadow: 0 10px 20px rgba(213, 178, 74, 0.25);
+}
+
+body.woocommerce-cart .woocommerce .wc-proceed-to-checkout a.checkout-button:hover,
+body.woocommerce-cart .woocommerce a.checkout-button:hover {
+	background: var(--comfortin-accent-hover) !important;
+}
+
+body.woocommerce-cart .woocommerce .wc-proceed-to-checkout a.checkout-button:focus-visible,
+body.woocommerce-cart .woocommerce a.checkout-button:focus-visible {
+	outline: 3px solid rgba(213, 178, 74, 0.45);
+	outline-offset: 2px;
+}
+
+/* Secondary actions: coupon + update cart */
+body.woocommerce-cart .woocommerce table.shop_table td.actions .button,
+body.woocommerce-cart .woocommerce table.shop_table td.actions button.button,
+body.woocommerce-cart .woocommerce table.shop_table td.actions input.button {
+	border-radius: 12px;
+}
+
+body.woocommerce-cart .woocommerce table.shop_table td.actions .coupon .button,
+body.woocommerce-cart .woocommerce button[name='update_cart'] {
+	background: transparent !important;
+	border: 2px solid rgba(213, 178, 74, 0.55) !important;
+	color: #1a1d25 !important;
+	font-weight: 600;
+}
+
+body.woocommerce-cart .woocommerce table.shop_table td.actions .coupon .button:hover,
+body.woocommerce-cart .woocommerce button[name='update_cart']:hover {
+	border-color: var(--comfortin-accent) !important;
+}
+
+body.woocommerce-cart .woocommerce table.shop_table td.actions .coupon .input-text {
+	border-radius: 12px;
+	border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Cross-sells now render after the cart: give them breathing room */
+body.woocommerce-cart .woocommerce .cross-sells {
+	margin-top: 28px;
+}
+
+body.woocommerce-cart .woocommerce .cross-sells > h2 {
+	margin-top: 0;
+}
+
+/* Mobile tightening */
+@media (max-width: 767px) {
+	body.woocommerce-cart .mfn-cart-step-1 .woocommerce .woocommerce-cart-form,
+	body.woocommerce-cart .mfn-cart-step-1 .woocommerce .cart-collaterals {
+		flex-basis: 100%;
+		max-width: 100%;
+		margin-left: 0;
+	}
+
+	body.woocommerce-cart .woocommerce table.shop_table td.actions .coupon {
+		flex-wrap: wrap;
+	}
+
+	body.woocommerce-cart .woocommerce table.shop_table td.actions .coupon .input-text {
+		width: 100%;
+		margin-right: 0;
+	}
+
+	body.woocommerce-cart .woocommerce table.shop_table td.actions .coupon .button {
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	body.woocommerce-cart .woocommerce button[name='update_cart'] {
+		width: 100%;
+		margin-top: 10px;
+	}
+}
+

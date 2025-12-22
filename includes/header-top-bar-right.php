@@ -107,6 +107,7 @@ if ( $has_user || $has_wishlist || $has_cart || $header_search || $action_link |
 
 						do_action('wpml_add_language_form_field');
 
+				
 						echo '<input type="submit" class="submit" value="" style="display:none;" />';
 
 						if ( mfn_opts_get('header-search-live') ) {
@@ -139,6 +140,10 @@ if ( $has_user || $has_wishlist || $has_cart || $header_search || $action_link |
 			}
 
 			// shop wishlist
+echo do_shortcode('[gtranslate]');
+
+
+	
 
 			if( $has_wishlist ){
 				echo '<a id="wishlist_button" class="top-bar-right-icon top-bar-right-icon-wishlist" href="'. get_permalink( mfn_opts_get('shop-wishlist-page') ). '">';
@@ -179,7 +184,7 @@ if ( $has_user || $has_wishlist || $has_cart || $header_search || $action_link |
 			}
 	
 		    // Currency
-			/*echo do_shortcode( '[woocs]' );*/	
+				echo do_shortcode('[woocs sd=1]');
 
 			// search icon
 

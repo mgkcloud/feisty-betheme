@@ -232,3 +232,23 @@ function cancelled_send_an_email_notification( $order_id, $order ){
     // Sending the email
     $email_notifications['WC_Email_Cancelled_Order']->trigger( $order_id );
 }
+
+add_filter( 'woocommerce_email_subject_new_order', 'custom_admin_new_order_email_subject', 10, 2 );
+
+function custom_admin_new_order_email_subject( $subject, $order ) {
+    if ( ! is_a( $order, 'WC_Order' ) ) return $subject;
+
+    $customer_name = $order->get_formatted_billing_full_name();
+    $order_number = $order->get_order_number();
+
+    return sprintf( 'New Order #%s from %s', $order_number, $customer_name );
+}
+
+add_filter( 'woocommerce_email_heading_new_order', 'custom_admin_new_order_email_heading', 10, 2 );
+
+function custom_admin_new_order_email_heading( $heading, $order ) {
+    if ( ! is_a( $order, 'WC_Order' ) ) return $heading;
+
+    $customer_name = $order->get_formatted_billing_full_name();
+    return sprintf( 'New Order from %s', $customer_name );
+}

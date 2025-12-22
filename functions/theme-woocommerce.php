@@ -221,6 +221,48 @@ if (! function_exists('mfn_woo_styles')) {
 }
 add_action('wp_enqueue_scripts', 'mfn_woo_styles');
 
+/**
+ * Comfort-in | Cart UX bridge
+ *
+ * Keep Cart Totals + primary checkout CTA visible by ensuring cross-sells do not
+ * render above totals inside the cart collaterals column.
+ */
+function comfortin_cart_reorder_cross_sells() {
+	if ( ! function_exists( 'is_cart' ) || ! function_exists( 'is_woocommerce' ) ) {
+		return;
+	}
+
+	if ( ! is_cart() ) {
+		return;
+	}
+
+	// Move cross-sells out of the collaterals column (where it appears before totals by default).
+	remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+	add_action( 'woocommerce_after_cart', 'woocommerce_cross_sell_display', 15 );
+}
+add_action( 'wp', 'comfortin_cart_reorder_cross_sells', 20 );
+
+/**
+ * Comfort-in | Cart-specific CSS overrides
+ */
+function comfortin_cart_enqueue_styles() {
+	if ( ! function_exists( 'is_cart' ) || ! function_exists( 'is_woocommerce' ) ) {
+		return;
+	}
+
+	if ( ! is_cart() ) {
+		return;
+	}
+
+	$handle = 'comfortin-cart';
+	$src = get_theme_file_uri( '/css/comfortin-cart.css' );
+	$deps = [ 'mfn-woo' ];
+	$ver = MFN_THEME_VERSION;
+
+	wp_enqueue_style( $handle, $src, $deps, $ver, 'all' );
+}
+add_action( 'wp_enqueue_scripts', 'comfortin_cart_enqueue_styles', 40 );
+
 
 function mfn_admin_scripts() {
 	if( is_admin() && function_exists('is_woocommerce') ) {

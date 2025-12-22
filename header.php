@@ -19,6 +19,11 @@
 
 <meta charset="<?php bloginfo('charset'); ?>" />
 <?php wp_head(); ?>
+	
+	
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://pgpymuhq.au.stape.io/1dpgpymuhq.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','crb1u0=GAxIKi09Sj5ELD4rPTRBBkxaW1w%3D');</script>
+<!-- End Google Tag Manager -->
 
 </head>
 
@@ -33,6 +38,11 @@
 			get_template_part('includes/header', 'creative');
 		}
 	?>
+	
+	
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://pgpymuhq.au.stape.io/ns.html?id=GTM-N5DKFDD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 	<div id="Wrapper">
 
@@ -201,3 +211,7 @@
 		?>
 
 		<?php do_action( 'mfn_hook_content_before' );
+		
+		
+		
+		
