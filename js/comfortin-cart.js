@@ -1,12 +1,16 @@
 (() => {
   const offsetFirst = "-55vh";
   const offsetNext = "-61vh";
+  const offsetFirst = "-55vh";
+  const offsetNext = "-61vh";
   const scale = "0.7";
 
   const apply = () => {
     const frames = document.querySelectorAll('iframe[title="chat widget"]');
     if (!frames.length) return;
 
+    frames.forEach((frame, index) => {
+      const offset = index === 0 ? offsetFirst : offsetNext;
     frames.forEach((frame, index) => {
       const offset = index === 0 ? offsetFirst : offsetNext;
       frame.style.setProperty(
@@ -17,6 +21,7 @@
       frame.style.setProperty("transform-origin", "bottom right", "important");
       frame.style.setProperty("right", "10px", "important");
       frame.style.setProperty("left", "auto", "important");
+      frame.style.setProperty("bottom", "0px", "important");
       frame.style.setProperty("bottom", "0px", "important");
       frame.style.setProperty("top", "auto", "important");
     });
