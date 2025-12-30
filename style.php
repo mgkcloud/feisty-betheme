@@ -23,14 +23,12 @@ html{
 
 <?php if ( $custom_layout && ( '' !== $layout_header_height ) ) : ?>
 	body:not(.template-slider) #Header{
-		min-height: <?php echo esc_attr( $layout_header_height .'px' ); ?>;
 	}
 	body.header-below:not(.template-slider) #Header{
 		padding-top: <?php echo esc_attr( $layout_header_height .'px' ); ?>;
 	}
 <?php else: ?>
 	body:not(.template-slider) #Header{
-		min-height: <?php echo esc_attr( mfn_opts_get( 'header-height', 250, [ 'unit' => 'px' ] ) ); ?>;
 	}
 	body.header-below:not(.template-slider) #Header{
 		padding-top: <?php echo esc_attr( mfn_opts_get( 'header-height', 250, [ 'unit' => 'px' ] ) ); ?>;

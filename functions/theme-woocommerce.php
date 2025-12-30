@@ -256,12 +256,15 @@ function comfortin_cart_enqueue_styles() {
 
 	$handle = 'comfortin-cart';
 	$src = get_theme_file_uri( '/css/comfortin-cart.css' );
-	$deps = [ 'mfn-woo' ];
+	$deps = [ 'mfn-woo', 'mfn-custom' ];
 	$ver = MFN_THEME_VERSION;
 
 	wp_enqueue_style( $handle, $src, $deps, $ver, 'all' );
+
+	$critical_css = ':is(body.woocommerce-cart, body.woocommerce-checkout) #Header{min-height:0!important;}';
+	wp_add_inline_style( 'mfn-custom', $critical_css );
 }
-add_action( 'wp_enqueue_scripts', 'comfortin_cart_enqueue_styles', 40 );
+add_action( 'wp_enqueue_scripts', 'comfortin_cart_enqueue_styles', 120 );
 
 /**
  * Comfort-in | Cart-specific JS overrides

@@ -124,6 +124,15 @@
 	}
 }
 
+@media only screen and (min-width: 1000px) {
+	:is(body.woocommerce-cart, body.woocommerce-checkout) #Top_bar.is-sticky #logo,
+	:is(body.woocommerce-cart, body.woocommerce-checkout) #Top_bar.is-sticky .custom-logo-link {
+		padding: 5px 0 !important;
+		height: 40px !important;
+		line-height: 50px !important;
+	}
+}
+
 :is(body.woocommerce-cart, body.woocommerce-checkout) #Top_bar .menu > li.current-menu-item > a,
 :is(body.woocommerce-cart, body.woocommerce-checkout) #Top_bar .menu > li.current-menu-item > a span,
 :is(body.woocommerce-cart, body.woocommerce-checkout) #Top_bar .menu > li.current_page_item > a,
@@ -457,7 +466,7 @@
     .woocommerce-notices-wrapper
     .woocommerce-error,
 :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce .woocommerce-notices-wrapper .alert {
-    margin: 0 0 12px;
+    margin: 0;
     padding: 12px 14px;
     border-radius: 10px;
     background: #e9f6ee;
@@ -466,9 +475,49 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
 }
 
-:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-info,
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce .woocommerce-notices-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-notices-wrapper {
     margin: 0 0 8px !important;
+}
+
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-message,
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-error,
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-info {
+    margin: 0 0 12px !important;
+}
+
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-message + .woocommerce-info,
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-message + .woocommerce-error,
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-info + .woocommerce-message,
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-info + .woocommerce-error,
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-error + .woocommerce-message,
+:is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-error + .woocommerce-info {
+    margin-top: 85px !important;
+}
+
+#text-6 .textwidget {
+    max-width: 160px !important;
+    margin: auto;
+}
+
+#Action_bar {
+    z-index: 1;
+}
+
+@media (max-width: 959px) {
+    :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-message + .woocommerce-info,
+    :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-message + .woocommerce-error,
+    :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-info + .woocommerce-message,
+    :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-info + .woocommerce-error,
+    :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-error + .woocommerce-message,
+    :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-error + .woocommerce-info {
+        margin-top: 115px !important;
+    }
 }
 
 :is(body.woocommerce-cart, body.woocommerce-checkout)
@@ -501,6 +550,12 @@
 	cursor: pointer;
 	text-decoration: underline;
 	text-underline-offset: 2px;
+	margin: 0;
+}
+
+
+.woocommerce-cart-form:after {
+    content: "All orders are completed & shipped within 7 business days."!important;
 }
 
 :is(body.woocommerce-cart, body.woocommerce-checkout) .comfortin-tooltip__content {
@@ -624,7 +679,7 @@
 }
 
 :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce .cart-collaterals .cart_totals table {
-    background: transparent;
+    background: var(--comfortin-card-bg);
     border-collapse: separate;
     border-spacing: 0 8px;
     margin-bottom: 12px;
@@ -647,7 +702,7 @@
 }
 
 :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce .cart-collaterals .cart_totals tr {
-    background: #fff;
+    background: var(--comfortin-card-bg);
     border-radius: 10px;
 }
 
@@ -729,6 +784,19 @@
     box-shadow: none;
 }
 
+/* Checkout review order table should match card background */
+:is(body.woocommerce-checkout) .woocommerce table.shop_table.woocommerce-checkout-review-order-table {
+    background: var(--comfortin-card-bg);
+}
+
+:is(body.woocommerce-checkout)
+    .woocommerce
+    table.shop_table.woocommerce-checkout-review-order-table
+    tbody
+    tr {
+    background: var(--comfortin-card-bg);
+}
+
 :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce table.shop_table thead th {
     background: var(--comfortin-soft);
     color: #3b4452;
@@ -748,6 +816,13 @@
     color: #1d2735;
     overflow-wrap: anywhere;
     word-break: break-word;
+}
+
+/* Keep users on cart: disable product links */
+:is(body.woocommerce-cart) .woocommerce-cart-form__cart-item a {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
 }
 
 :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce table.shop_table td.product-price,
@@ -1203,6 +1278,17 @@ body.woocommerce-cart .woocommerce table.shop_table td.actions {
         display: none;
     }
 
+    :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce table.shop_table_responsive {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce table.shop_table_responsive tbody {
+        border: 0;
+    }
+
     :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce table.shop_table_responsive tbody tr.cart_item {
         display: grid;
         grid-template-columns: 86px 1fr;
@@ -1270,6 +1356,23 @@ body.woocommerce-cart .woocommerce table.shop_table td.actions {
         line-height: 1.3;
         padding-right: 24px;
         text-align: start!important;
+    }
+
+    :is(body.woocommerce-cart, body.woocommerce-checkout)
+        .woocommerce
+        table.shop_table_responsive
+        tbody
+        tr.cart_item {
+        background: var(--comfortin-card-bg);
+    }
+
+    :is(body.woocommerce-cart, body.woocommerce-checkout)
+        .woocommerce
+        table.shop_table_responsive
+        tbody
+        tr.cart_item
+        td {
+        background: var(--comfortin-card-bg);
     }
 
     @media only screen and (max-width: 999px) {
@@ -1508,5 +1611,12 @@ body.woocommerce-cart .woocommerce table.shop_table td.actions {
     }
     :is(body.woocommerce-cart, body.woocommerce-checkout) .mfn-cart-step-1 .cross-sells {
         grid-area: cross;
+    }
+}
+
+
+@media (min-width: 1001px) {
+    #Wrapper #Header_wrapper #Header {
+        min-height: auto !important;
     }
 }
