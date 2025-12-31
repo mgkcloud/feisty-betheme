@@ -507,6 +507,14 @@
     margin: 0 0 12px !important;
 }
 
+@media (max-width: 767px) {
+    :is(body.woocommerce-cart, body.woocommerce-checkout)
+        .woocommerce
+        .woocommerce-message.alert.alert_success {
+        max-height: 100px;
+    }
+}
+
 :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-message + .woocommerce-info,
 :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-message + .woocommerce-error,
 :is(body.woocommerce-cart, body.woocommerce-checkout) .woocommerce > .woocommerce-info + .woocommerce-message,
