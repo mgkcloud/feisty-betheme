@@ -857,7 +857,8 @@
     margin: 0;
 }
 
-.woocommerce-cart-form:after {
+.woocommerce-cart-form:after,
+.widgets_wrapper:after {
     content: "All orders are completed & shipped within 7 business days." !important;
 }
 
