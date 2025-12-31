@@ -74,16 +74,36 @@
       const trigger = tooltip.querySelector(".comfortin-tooltip__trigger");
       const content = tooltip.querySelector(".comfortin-tooltip__content");
 
+      const positionTooltip = () => {
+        content.style.removeProperty("--comfortin-tooltip-shift");
+
+        const padding = 12;
+        const rect = content.getBoundingClientRect();
+        let shift = 0;
+
+        if (rect.left < padding) {
+          shift = padding - rect.left;
+        } else if (rect.right > window.innerWidth - padding) {
+          shift = (window.innerWidth - padding) - rect.right;
+        }
+
+        if (shift !== 0) {
+          content.style.setProperty("--comfortin-tooltip-shift", `${shift}px`);
+        }
+      };
+
       const closeTooltip = () => {
         tooltip.classList.remove("is-open");
         trigger.setAttribute("aria-expanded", "false");
         content.setAttribute("aria-hidden", "true");
+        content.style.removeProperty("--comfortin-tooltip-shift");
       };
 
       const openTooltip = () => {
         tooltip.classList.add("is-open");
         trigger.setAttribute("aria-expanded", "true");
         content.setAttribute("aria-hidden", "false");
+        requestAnimationFrame(positionTooltip);
       };
 
       trigger.addEventListener("click", (event) => {
