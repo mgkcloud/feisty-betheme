@@ -1255,15 +1255,9 @@
     word-break: break-word;
 }
 
-/* Keep users on cart: disable product links */
-:is(body.woocommerce-cart) .woocommerce-cart-form__cart-item a {
-    pointer-events: none;
-    cursor: default;
-    text-decoration: none;
-}
-
-/* Keep users on cart: disable product links */
-:is(body.woocommerce-cart) .woocommerce-cart-form__cart-item a {
+/* Keep users on cart: disable product links only */
+:is(body.woocommerce-cart) .woocommerce-cart-form__cart-item .product-name a,
+:is(body.woocommerce-cart) .woocommerce-cart-form__cart-item .product-thumbnail a {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
@@ -1290,6 +1284,47 @@
     height: 34px;
     border-radius: 10px;
     border: 1px solid var(--comfortin-border);
+}
+
+:is(body.woocommerce-cart, body.woocommerce-checkout)
+    .woocommerce
+    table.shop_table
+    td.product-quantity
+    .quantity {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    position: static;
+}
+
+:is(body.woocommerce-cart, body.woocommerce-checkout)
+    .woocommerce
+    table.shop_table
+    td.product-quantity
+    .quantity
+    a.quantity-change {
+    position: static;
+    width: 28px;
+    height: 32px;
+    flex: 0 0 28px;
+    border-radius: 6px;
+    z-index: 1;
+}
+
+:is(body.woocommerce-cart, body.woocommerce-checkout)
+    .woocommerce
+    table.shop_table
+    td.product-quantity
+    .quantity
+    .qty {
+    width: 56px;
+    text-align: center;
+    padding: 0 6px !important;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
 :is(body.woocommerce-cart, body.woocommerce-checkout)
@@ -2170,6 +2205,40 @@ body.woocommerce-cart .woocommerce table.shop_table td.actions {
         align-items: center;
         gap: 8px;
         flex-wrap: nowrap;
+        width: auto;
+    }
+
+    :is(body.woocommerce-cart, body.woocommerce-checkout)
+        .woocommerce
+        table.shop_table_responsive
+        tbody
+        tr.cart_item
+        td.product-quantity
+        .quantity
+        a.quantity-change {
+        position: static;
+        width: 28px;
+        height: 32px;
+        flex: 0 0 28px;
+        border-radius: 6px;
+        pointer-events: auto;
+    }
+
+    :is(body.woocommerce-cart, body.woocommerce-checkout)
+        .woocommerce
+        table.shop_table_responsive
+        tbody
+        tr.cart_item
+        td.product-quantity
+        .quantity
+        .qty {
+        width: 56px;
+        text-align: center;
+        padding: 0 6px !important;
+        height: 32px;
+        line-height: 32px;
+        font-size: 14px;
+        box-sizing: border-box;
     }
 
     :is(body.woocommerce-cart, body.woocommerce-checkout)
