@@ -1257,7 +1257,10 @@
 
 /* Keep users on cart: disable product links only */
 :is(body.woocommerce-cart) .woocommerce-cart-form__cart-item .product-name a,
-:is(body.woocommerce-cart) .woocommerce-cart-form__cart-item .product-thumbnail a {
+:is(body.woocommerce-cart)
+    .woocommerce-cart-form__cart-item
+    .product-thumbnail
+    a {
     pointer-events: none;
     cursor: default;
     text-decoration: none;
@@ -2109,7 +2112,7 @@ body.woocommerce-cart .woocommerce table.shop_table td.actions {
     @media only screen and (max-width: 999px) {
         #Top_bar a.responsive-menu-toggle {
             display: block !important;
-            margin-top: -38px;
+            margin-top: 0px;
         }
     }
 
