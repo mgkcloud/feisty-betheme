@@ -1170,11 +1170,15 @@
     .wc-proceed-to-checkout {
     text-align: center;
     display: flex;
+    display: -webkit-flex;
     flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
     justify-content: center;
+    -webkit-justify-content: center;
     gap: 16px;
     width: 100%;
     flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
     margin-top: 14px;
 }
 
