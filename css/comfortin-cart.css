@@ -1168,6 +1168,13 @@
     .woocommerce
     .cart-collaterals
     .wc-proceed-to-checkout {
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+    flex-direction: column-reverse;
     margin-top: 14px;
 }
 
